@@ -19,7 +19,7 @@ jobs:
       - run: 
           name: list pr files
           command: |
-            git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD master)    
+            git --no-pager diff --name-only $(git --no-pager log --no-color -n 1 --format='%p')   
       - run: 
           name: "Install maven"
           command: | 
@@ -57,6 +57,6 @@ jobs:
           command: |         
             rm -rf cxone_reporting_circleci
             git clone https://github.com/louispCx/cxone_reporting_circleci.git
-            chmod a+x cxone_reporting_circleci/pr_comment.sh
-            cxone_reporting_circleci/pr_comment.sh
+            chmod a+x cxone_reporting_circleci/pr_comment_cli.sh
+            cxone_reporting_circleci/pr_comment_cli.sh
  
